@@ -211,3 +211,99 @@
   .two-price>article{min-height:280px;padding:24px!important}
   .page-keychains .kc-image{height:250px}
 }
+
+/* ===== PawCraft all-fix release ===== */
+.hero{min-height:clamp(650px,78vh,900px);position:relative;overflow:hidden;background:#5b514c}
+.hero-diptych{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:0}
+.hero-diptych img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.hero-diptych img+img{border-left:1px solid rgba(255,255,255,.18)}
+.hero-shade{background:linear-gradient(90deg,rgba(34,27,23,.72) 0%,rgba(34,27,23,.35) 45%,rgba(34,27,23,.15) 100%)!important}
+.hero-content{z-index:2}
+
+.category-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:22px!important}
+.category-grid .category{grid-column:auto!important;min-height:310px!important}
+.category-grid .category-postcards{grid-column:1/2!important}
+.category-grid .category-3d{grid-column:2/4!important}
+.category-grid .category-3d img{object-position:center 58%!important}
+
+.kc-search,.kc-filters,.kc-badge,.kc-type{display:none!important}
+.kc-grid{margin-top:26px!important}
+.kc-card{overflow:hidden!important}
+.kc-image{background:transparent!important;border:0!important;padding:0!important}
+.kc-image img{object-fit:cover!important;background:transparent!important}
+
+.pots-page-hero{padding:72px 0 56px;background:linear-gradient(135deg,#f3ece6,#fbf8f5)}
+.page-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,.85fr);gap:52px;align-items:center}
+.pots-hero-collage{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;height:470px}
+.pots-hero-collage img{width:100%;height:100%;object-fit:cover;border-radius:26px;box-shadow:0 18px 44px rgba(61,47,39,.13)}
+.pots-hero-collage img:last-child{margin-top:42px;height:calc(100% - 42px)}
+.pots-showcase{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.pots-visual-card{position:relative;min-height:360px;overflow:hidden;border-radius:26px;background:#ddd;box-shadow:0 14px 34px rgba(61,47,39,.12)}
+.pots-visual-card--wide{grid-column:span 2}
+.pots-visual-media{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;background:#ddd;cursor:zoom-in}
+.pots-visual-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.pots-visual-card:hover img{transform:scale(1.035)}
+.pots-visual-caption{position:absolute;left:0;right:0;bottom:0;padding:72px 24px 22px;color:#fff;background:linear-gradient(transparent,rgba(28,22,19,.88));pointer-events:none}
+.pots-visual-caption h3{margin:0 0 6px;font-size:32px;line-height:1}
+.pots-visual-caption p{margin:0 0 10px;color:rgba(255,255,255,.84)}
+.pots-visual-caption a{color:#fff;font-weight:800;pointer-events:auto;text-decoration:none}
+.pots-order-strip{display:flex;justify-content:space-between;align-items:center;gap:30px;padding:34px 38px;border-radius:28px;background:#fff;border:1px solid var(--line);box-shadow:0 14px 34px rgba(61,47,39,.08)}
+.pots-order-strip h2{margin:8px 0 10px}
+.pots-order-strip p{margin:0;max-width:760px;color:var(--muted)}
+
+@media(max-width:960px){
+ .category-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .category-grid .category-postcards,.category-grid .category-3d{grid-column:auto!important}
+ .page-hero-grid{grid-template-columns:1fr}
+ .pots-hero-collage{height:380px}
+ .pots-showcase{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .pots-visual-card--wide{grid-column:span 1}
+}
+@media(max-width:680px){
+ .hero{min-height:720px}
+ .hero-diptych{grid-template-columns:1fr 1fr}
+ .hero-diptych img{object-position:center}
+ .category-grid{grid-template-columns:1fr!important}
+ .category-grid .category{min-height:260px!important}
+ .pots-hero-collage{height:300px}
+ .pots-showcase{grid-template-columns:1fr}
+ .pots-visual-card{min-height:320px}
+ .pots-order-strip{flex-direction:column;align-items:flex-start;padding:26px}
+}
+
+/* Breed category switcher: restored without search field or badges */
+.page-keychains #breed-keychains .kc-filters{
+  display:flex!important;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:4px 0 26px;
+}
+.page-keychains #breed-keychains .kc-filters button{
+  appearance:none;
+  padding:10px 18px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:#fff;
+  color:var(--ink);
+  font:700 14px/1 Inter,Arial,sans-serif;
+  cursor:pointer;
+  transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease;
+}
+.page-keychains #breed-keychains .kc-filters button:hover{
+  border-color:var(--accent);
+  transform:translateY(-1px);
+}
+.page-keychains #breed-keychains .kc-filters button.active,
+.page-keychains #breed-keychains .kc-filters button[aria-pressed="true"]{
+  background:var(--accent);
+  color:#fff;
+  border-color:var(--accent);
+}
+.page-keychains .kc-search,
+.page-keychains .kc-badge,
+.page-keychains .kc-type{display:none!important}
+@media(max-width:560px){
+  .page-keychains #breed-keychains .kc-filters{gap:8px;margin-bottom:20px}
+  .page-keychains #breed-keychains .kc-filters button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+}
