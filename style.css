@@ -476,3 +476,25 @@
 @media(max-width:650px){
   .portrait-showcase-card img{object-fit:cover!important}
 }
+
+/* ===== Mobile reliability repair ===== */
+@media(max-width:760px){
+  /* Mobile webviews sometimes fail to trigger IntersectionObserver. Never hide content. */
+  .reveal{opacity:1!important;transform:none!important}
+  #breed-keychains,#breed-grid,.kc-collection-block{display:block!important;opacity:1!important;transform:none!important;visibility:visible!important}
+  #breed-grid.kc-grid{display:grid!important;grid-template-columns:1fr!important;gap:16px!important;margin-top:20px!important}
+  #breed-grid .kc-card:not([hidden]){display:block!important;opacity:1!important;visibility:visible!important}
+  #breed-grid .kc-card[hidden]{display:none!important}
+  .page-keychains .kc-hero{padding:44px 0 34px!important}
+  .page-keychains .kc-hero-grid{gap:24px!important}
+  .page-keychains .kc-hero-visual img{height:auto!important;max-height:420px!important;object-fit:contain!important;background:#f1e9e3!important}
+  .page-keychains .kc-hero-visual span{display:block!important;margin-top:10px!important}
+  .page-keychains #collection{padding-top:44px!important}
+  .page-keychains .kc-block-head{display:block!important}
+  .page-keychains .kc-block-head p{margin-top:10px!important}
+  .page-keychains .kc-image{height:280px!important}
+  .page-keychains .kc-image img{width:100%!important;height:100%!important;object-fit:cover!important}
+
+  .page-reference-home .personal img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;opacity:1!important;visibility:visible!important}
+  .page-reference-home .personal[href="beds.html"] img{object-position:center 55%!important;background:#e9e1db!important}
+}

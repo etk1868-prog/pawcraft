@@ -75,3 +75,43 @@ document.querySelectorAll('a[href="/"]').forEach(link=>{
     window.location.assign('/');
   });
 });
+
+// Robust breed filters. Works without a search input and never hides the grid on load.
+document.addEventListener('DOMContentLoaded',()=>{
+  const root=document.getElementById('breed-keychains');
+  const grid=document.getElementById('breed-grid');
+  if(!root || !grid) return;
+  const buttons=[...root.querySelectorAll('.kc-filters button[data-filter]')];
+  const cards=[...grid.querySelectorAll('.kc-card')];
+  const empty=document.getElementById('breed-empty');
+  const reset=document.getElementById('breed-reset');
+  const count=document.querySelector('.kc-hero-visual span');
+  let active='Все породы';
+
+  grid.style.display='grid';
+  cards.forEach(card=>{card.hidden=false;card.style.display='';});
+  if(count) count.textContent=`${cards.length} моделей`;
+
+  const apply=()=>{
+    let shown=0;
+    cards.forEach(card=>{
+      const visible=active==='Все породы' || card.dataset.category===active;
+      card.hidden=!visible;
+      card.style.display=visible?'':'none';
+      if(visible) shown++;
+    });
+    buttons.forEach(button=>{
+      const selected=button.dataset.filter===active;
+      button.classList.toggle('active',selected);
+      button.setAttribute('aria-pressed',String(selected));
+    });
+    if(empty) empty.hidden=shown!==0;
+  };
+
+  buttons.forEach(button=>button.addEventListener('click',()=>{
+    active=button.dataset.filter || 'Все породы';
+    apply();
+  }));
+  reset?.addEventListener('click',()=>{active='Все породы';apply();});
+  apply();
+});
