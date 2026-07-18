@@ -500,3 +500,25 @@
 }
 
 .highlight-note{display:inline-block;background:#b97a56;color:#fff;padding:10px 16px;border-radius:999px;font-weight:700;margin-top:16px}.postcards-gallery .gallery-item,.postcards-gallery figure{background:transparent!important;border:none!important;box-shadow:none!important;padding:0!important}.postcards-gallery img{border-radius:24px;display:block;width:100%}
+
+/* postcards fix */
+.postcards-gallery figure{
+background:transparent!important;
+border:none!important;
+box-shadow:none!important;
+padding:0!important;
+margin:0!important;
+overflow:visible!important;
+}
+.postcards-gallery figcaption{
+display:none!important;
+}
+.postcards-gallery img{
+display:block!important;
+width:100%!important;
+height:auto!important;
+object-fit:cover!important;
+background:transparent!important;
+padding:0!important;
+border-radius:28px!important;
+}
