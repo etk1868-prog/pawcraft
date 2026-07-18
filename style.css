@@ -412,3 +412,229 @@ body{background:#f7f3ee;color:#493f38;-webkit-font-smoothing:antialiased;text-re
  .kc-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important}
 }
 @media(max-width:460px){.kc-grid{grid-template-columns:1fr!important}}
+
+/* =========================================================
+   PawCraft visual system v3: every section uses one media scale
+   ========================================================= */
+:root{
+  --pc-media-ratio: 4 / 3;
+  --pc-media-height: 260px;
+  --pc-media-height-tablet: 230px;
+  --pc-media-height-mobile: 220px;
+}
+
+/* One predictable grid rhythm on every internal page */
+.gallery-grid,
+.postcards-gallery,
+.archive-gallery,
+.masonry,
+.pot-gallery,
+.reviews-card-grid,
+.review-video-grid,
+.archive-videos,
+.tails-grid,
+.personal-grid,
+.category-grid,
+.review-preview,
+.products-grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:22px!important;
+  columns:auto!important;
+  align-items:stretch!important;
+}
+
+/* Universal visual frame */
+.gallery-grid>img,
+.postcards-gallery>img,
+.masonry>img,
+.pot-gallery>img,
+.archive-gallery>img,
+.archive-gallery>figure,
+.archive-videos>video,
+.review-video-card,
+.review-card,
+.tail-card,
+.category,
+.personal,
+.product-card,
+.kc-card,
+.pot-card{
+  overflow:hidden!important;
+  border:1px solid var(--card-border)!important;
+  border-radius:var(--media-radius)!important;
+  background:#fff!important;
+  box-shadow:var(--media-shadow)!important;
+}
+
+/* All standalone gallery photos are the same size */
+.gallery-grid>img,
+.postcards-gallery>img,
+.masonry>img,
+.pot-gallery>img,
+.archive-gallery>img,
+.archive-gallery>figure>img{
+  display:block!important;
+  width:100%!important;
+  height:var(--pc-media-height)!important;
+  min-height:0!important;
+  max-height:none!important;
+  aspect-ratio:auto!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  margin:0!important;
+  border-radius:var(--media-radius)!important;
+}
+.postcards-gallery>img{object-fit:contain!important;padding:10px!important;background:#f4efeb!important}
+.archive-gallery>figure{display:flex!important;flex-direction:column!important;margin:0!important}
+.archive-gallery>figure>img{border:0!important;border-radius:0!important;box-shadow:none!important}
+.archive-gallery>figure>figcaption{flex:1!important;padding:16px 18px!important;background:#fff!important}
+
+/* Video sections no longer form giant vertical panels */
+.archive-videos>video,
+.review-video-card>video{
+  display:block!important;
+  width:100%!important;
+  height:var(--pc-media-height)!important;
+  min-height:0!important;
+  max-height:none!important;
+  aspect-ratio:auto!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  margin:0!important;
+  border-radius:var(--media-radius)!important;
+  background:#17120f!important;
+}
+.review-video-card>video{border-radius:0!important}
+
+/* Reviews: same photographic crop and compact copy */
+.review-card__media{
+  display:block!important;
+  width:100%!important;
+  height:var(--pc-media-height)!important;
+  min-height:0!important;
+  aspect-ratio:auto!important;
+  overflow:hidden!important;
+  background:#f2ece7!important;
+}
+.review-card__media img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  padding:0!important;
+  margin:0!important;
+}
+.review-card__body{min-height:92px!important;padding:16px 18px 18px!important}
+
+/* Home page cards use the same height instead of tall poster crops */
+.category-grid .category,
+.category-grid .category.large,
+.personal-grid .personal,
+.personal-grid .personal-main,
+.tail-card{
+  grid-column:auto!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  aspect-ratio:auto!important;
+}
+.category-grid .category,
+.category-grid .category.large,
+.personal-grid .personal,
+.personal-grid .personal-main{height:var(--pc-media-height)!important}
+.category-grid .category>img,
+.personal-grid .personal>img,
+.tail-card>img{
+  display:block!important;
+  width:100%!important;
+  height:var(--pc-media-height)!important;
+  min-height:0!important;
+  aspect-ratio:auto!important;
+  object-fit:cover!important;
+  object-position:center!important;
+}
+.tail-card>figcaption{min-height:70px!important;padding:15px 17px!important;background:#fff!important}
+
+/* Catalog and 3D product cards share the same photo height */
+.product-card__media,
+.kc-image,
+.pot-photo{
+  display:block!important;
+  width:100%!important;
+  height:var(--pc-media-height)!important;
+  min-height:0!important;
+  aspect-ratio:auto!important;
+  overflow:hidden!important;
+  background:#eee7e1!important;
+}
+.product-card__media img,
+.kc-image img,
+.pot-photo img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  max-height:none!important;
+  aspect-ratio:auto!important;
+  object-fit:cover!important;
+  object-position:center!important;
+}
+.kc-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:22px!important}
+.pot-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:22px!important}
+.kc-body,.pot-card__body{padding:17px 18px!important}
+.kc-body h3,.pot-card__body h3{min-height:0!important;margin-bottom:12px!important;font-size:23px!important}
+
+/* Hero images are restrained and consistent, not full-height posters */
+.product-hero .split>img,
+.pot-hero__photo img,
+.kc-hero-visual img,
+.section-soft .split>img{
+  display:block!important;
+  width:100%!important;
+  height:min(420px,38vw)!important;
+  min-height:300px!important;
+  max-height:420px!important;
+  aspect-ratio:auto!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  border-radius:var(--media-radius)!important;
+  box-shadow:var(--media-shadow)!important;
+}
+
+/* 3D overview cards */
+.showcase>a,
+.showcase>a:nth-child(even){
+  display:grid!important;
+  grid-template-columns:42% 58%!important;
+  min-height:0!important;
+  overflow:hidden!important;
+  border-radius:var(--media-radius)!important;
+  background:#fff!important;
+  box-shadow:var(--media-shadow)!important;
+}
+.showcase>a>img{
+  width:100%!important;
+  height:100%!important;
+  min-height:280px!important;
+  max-height:320px!important;
+  aspect-ratio:auto!important;
+  object-fit:cover!important;
+}
+
+@media(max-width:1000px){
+  :root{--pc-media-height:var(--pc-media-height-tablet)}
+  .gallery-grid,.postcards-gallery,.archive-gallery,.masonry,.pot-gallery,.reviews-card-grid,.review-video-grid,.archive-videos,.tails-grid,.personal-grid,.category-grid,.review-preview,.products-grid,.kc-grid,.pot-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .product-hero .split>img,.pot-hero__photo img,.kc-hero-visual img,.section-soft .split>img{height:360px!important;min-height:0!important}
+}
+@media(max-width:700px){
+  :root{--pc-media-height:var(--pc-media-height-mobile)}
+  .gallery-grid,.postcards-gallery,.archive-gallery,.masonry,.pot-gallery,.reviews-card-grid,.review-video-grid,.archive-videos,.tails-grid,.personal-grid,.category-grid,.review-preview,.products-grid,.pot-grid{grid-template-columns:1fr!important;gap:16px!important}
+  .kc-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important}
+  .category-grid .category,.category-grid .category.large,.personal-grid .personal,.personal-grid .personal-main{height:var(--pc-media-height)!important}
+  .product-hero .split>img,.pot-hero__photo img,.kc-hero-visual img,.section-soft .split>img{height:260px!important;min-height:0!important;max-height:260px!important}
+  .showcase>a,.showcase>a:nth-child(even){grid-template-columns:1fr!important}
+  .showcase>a>img{height:var(--pc-media-height)!important;min-height:0!important;max-height:none!important}
+}
+@media(max-width:460px){.kc-grid{grid-template-columns:1fr!important}}
