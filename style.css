@@ -326,3 +326,71 @@ body{background:#f7f3ee;color:#493f38;-webkit-font-smoothing:antialiased;text-re
 /* Release additions */
 .kc-empty{margin-top:22px;padding:34px;border:1px solid var(--line);border-radius:26px;background:var(--paper);text-align:center;box-shadow:0 12px 34px rgba(66,44,29,.07)}.kc-empty[hidden]{display:none}.kc-empty h3{font:700 clamp(30px,4vw,46px)/1 Georgia,"Times New Roman",serif;margin:10px 0}.kc-empty p{max-width:700px;margin:0 auto 22px;color:var(--muted);line-height:1.6}.kc-empty__actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.page-404{min-height:100vh;background:radial-gradient(circle at top left,#fff 0,#f7f3ee 45%,#eadfd5 100%)}.error-page{min-height:100vh;display:grid;place-items:center;padding:24px}.error-card{width:min(760px,100%);padding:clamp(32px,6vw,72px);border:1px solid var(--line);border-radius:34px;background:rgba(255,255,255,.85);box-shadow:var(--shadow);text-align:center}.error-card .brand{justify-content:center}.error-code{display:block;margin-top:42px;color:var(--accent2);font:800 clamp(70px,15vw,150px)/.8 Georgia,"Times New Roman",serif;letter-spacing:-.08em}.error-card h1{font:700 clamp(38px,6vw,68px)/.96 Georgia,"Times New Roman",serif;letter-spacing:-.045em;margin:24px 0 16px}.error-card p{max-width:580px;margin:0 auto;color:var(--muted);font-size:18px;line-height:1.6}.error-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:30px}@media(max-width:620px){.kc-empty{padding:26px 18px}.kc-empty__actions .btn,.error-actions .btn{width:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+
+/* v13: compact, consistent media system */
+:root{--media-radius:22px;--media-card-shadow:0 12px 34px rgba(73,58,50,.10)}
+
+/* Catalogue: a readable shop grid instead of tall photo columns */
+.page-catalog .products-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.page-catalog .product-card{display:flex;flex-direction:column;background:#fff;box-shadow:var(--media-card-shadow)}
+.page-catalog .product-card img{width:100%;height:270px;aspect-ratio:auto;object-fit:cover;background:#eee7df}
+.page-catalog .product-card>div{display:flex;flex:1;flex-direction:column;padding:22px 24px 24px}
+.page-catalog .product-card h3{font-size:30px;line-height:1.05;margin:8px 0 12px}
+.page-catalog .product-card b{margin-top:auto}
+
+/* Reviews: compact cards; screenshots are never cropped */
+.page-reviews .video-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.page-reviews .video-grid video{width:100%;height:460px;aspect-ratio:auto;object-fit:cover;border-radius:var(--media-radius);background:#1d1714;box-shadow:var(--media-card-shadow)}
+.page-reviews .review-masonry{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;columns:auto}
+.page-reviews .review-masonry img{width:100%;height:420px;margin:0;object-fit:contain;border:1px solid var(--line);border-radius:var(--media-radius);background:#fff;box-shadow:var(--media-card-shadow)}
+.page-reviews .archive-videos{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.page-reviews .archive-videos video{height:460px;aspect-ratio:auto;object-fit:cover}
+
+/* Product pages: consistent, moderate image sizes */
+.product-hero .split>img,.product-hero img.rounded{width:100%;height:500px;max-height:none;object-fit:cover;border-radius:var(--media-radius)}
+.gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.gallery-grid img,.gallery-grid.portraits img{width:100%;height:340px;max-height:none;aspect-ratio:auto;object-fit:cover;border-radius:var(--media-radius);background:#eee7df}
+.masonry{columns:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.masonry figure{margin:0}
+.masonry img{width:100%;height:360px;object-fit:cover}
+.archive-gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.archive-gallery img{height:280px;aspect-ratio:auto;object-fit:cover}
+
+/* Home page: visual hierarchy without billboard-sized cards */
+.home-showcase{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.showcase-card,.showcase-card.showcase-main{grid-column:auto;min-height:400px}
+.showcase-card img{height:100%}
+.showcase-card:not(.showcase-main) h3,.showcase-card h2{font-size:clamp(36px,4vw,52px)}
+.feature-collage{min-height:520px}
+.review-home-media video,.review-home-media img{height:400px}
+.review-preview video,.review-preview img{height:380px}
+
+/* 3D category cards */
+.page-3d .showcase>a{min-height:0}
+.page-3d .showcase img{height:360px;object-fit:cover}
+
+@media(max-width:980px){
+ .page-catalog .products-grid,.page-reviews .review-masonry,.gallery-grid,.masonry,.archive-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .home-showcase{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .page-reviews .video-grid,.page-reviews .archive-videos{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .page-catalog .product-card img{height:250px}
+ .product-hero .split>img,.product-hero img.rounded{height:440px}
+}
+
+@media(max-width:620px){
+ .page-catalog .products-grid,.page-reviews .review-masonry,.page-reviews .video-grid,.page-reviews .archive-videos,.gallery-grid,.masonry,.archive-gallery,.home-showcase{grid-template-columns:1fr}
+ .page-catalog .products-grid{gap:16px}
+ .page-catalog .product-card img{height:230px}
+ .page-catalog .product-card>div{padding:19px 20px 22px}
+ .page-catalog .product-card h3{font-size:28px}
+ .page-reviews .review-masonry img{height:auto;max-height:560px;object-fit:contain}
+ .page-reviews .video-grid video,.page-reviews .archive-videos video{height:auto;aspect-ratio:4/5}
+ .product-hero .split>img,.product-hero img.rounded{height:340px}
+ .gallery-grid img,.gallery-grid.portraits img,.masonry img{height:300px}
+ .archive-gallery img{height:260px;aspect-ratio:auto}
+ .showcase-card,.showcase-card.showcase-main{min-height:390px}
+ .feature-collage{min-height:390px}
+ .review-home-media video,.review-home-media img,.review-preview video,.review-preview img{height:340px}
+ .page-3d .showcase img{height:280px;aspect-ratio:auto}
+}
