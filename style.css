@@ -498,3 +498,5 @@
   .page-reference-home .personal img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;opacity:1!important;visibility:visible!important}
   .page-reference-home .personal[href="beds.html"] img{object-position:center 55%!important;background:#e9e1db!important}
 }
+
+.highlight-note{display:inline-block;background:#b97a56;color:#fff;padding:10px 16px;border-radius:999px;font-weight:700;margin-top:16px}.postcards-gallery .gallery-item,.postcards-gallery figure{background:transparent!important;border:none!important;box-shadow:none!important;padding:0!important}.postcards-gallery img{border-radius:24px;display:block;width:100%}
