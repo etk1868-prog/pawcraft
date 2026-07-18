@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded',()=>{
  const menu=document.querySelector('.menu-btn'),mobile=document.querySelector('.mobile-menu');if(menu&&mobile){menu.setAttribute('aria-expanded','false');menu.addEventListener('click',()=>{const open=mobile.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Закрыть меню':'Открыть меню')});mobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobile.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Открыть меню')}));document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mobile.classList.contains('open')){mobile.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.focus()}});}
  const prog=document.querySelector('.progress');const progress=()=>{if(!prog)return;const d=document.documentElement,max=d.scrollHeight-d.clientHeight;prog.style.width=(max>0?d.scrollTop/max*100:0)+'%'};addEventListener('scroll',progress,{passive:true});progress();
  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.07});document.querySelectorAll('section,.product-card,.tail-card').forEach(x=>{x.classList.add('reveal');io.observe(x)});
- const imageTriggers=[...document.querySelectorAll('.review-card__media img, [data-lightbox-image]')];
+ const imageTriggers=[...document.querySelectorAll('[data-lightbox-image]')];
  const videoTriggers=[...document.querySelectorAll('.review-video-card')];
  if(imageTriggers.length||videoTriggers.length){
    const viewer=document.createElement('div');
