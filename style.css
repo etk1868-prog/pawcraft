@@ -171,3 +171,43 @@
  .page-reference-reviews .video-grid{grid-template-columns:1fr}.page-reference-reviews .review-video-card video{height:360px}.page-reference-reviews .review-images{columns:1}
  .page-reference-contacts .page-hero,.page-reference-reviews .page-hero{padding:62px 0 44px}.page-reference-contacts .contact-card{min-height:220px;padding:26px}.page-reference-contacts .section-soft .rounded{height:360px}
 }
+
+/* ===== Corrective patch: homepage, delivery and breed cards ===== */
+/* A single stable hero image, no video frame duplication */
+.page-reference-home .hero{min-height:clamp(620px,76vh,860px)}
+.page-reference-home .hero-image{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center 58%;
+}
+.page-reference-home .hero-shade{
+  background:linear-gradient(90deg,rgba(31,24,20,.82) 0%,rgba(31,24,20,.52) 44%,rgba(31,24,20,.12) 76%);
+}
+
+/* Delivery actions: longer, calmer buttons */
+.two-price{grid-template-columns:repeat(2,minmax(0,1fr))!important;max-width:900px;margin-inline:auto}
+.two-price>article{display:flex;flex-direction:column;min-height:330px;padding:32px!important}
+.two-price>article p{margin:14px 0 26px}
+.two-price>article .btn{
+  width:100%;min-height:54px;margin-top:auto;padding-inline:30px;
+  border-radius:16px;font-size:16px;
+}
+
+/* Breed keychains: remove the beige mat around every product photo */
+.page-keychains .kc-card{background:#fff;border-color:#e2d8d0}
+.page-keychains .kc-image{
+  height:280px;background:#fff!important;padding:0!important;
+  border-bottom:1px solid #eee5de;
+}
+.page-keychains .kc-image img{
+  width:100%;height:100%;padding:0!important;margin:0!important;
+  object-fit:cover!important;object-position:center!important;background:#fff!important;
+}
+.page-keychains .kc-badge{z-index:2}
+
+@media(max-width:680px){
+  .page-reference-home .hero{min-height:680px}
+  .page-reference-home .hero-image{object-position:center 62%}
+  .two-price{grid-template-columns:1fr!important}
+  .two-price>article{min-height:280px;padding:24px!important}
+  .page-keychains .kc-image{height:250px}
+}
